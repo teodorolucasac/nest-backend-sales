@@ -6,6 +6,12 @@ import { createTableUser1680700537567 } from './migration/1680700537567-create_t
 import { createTableState1680704808919 } from './migration/1680704808919-create_table_state';
 import { createTableCity1680704816860 } from './migration/1680704816860-create_table_city';
 import { createTableAddress1680704823670 } from './migration/1680704823670-create_table_address';
+import { alterTableState1680713117417 } from './migration/1680713117417-alter-table-state';
+import { insertInState1680713137762 } from './migration/1680713137762-insert-in-state';
+import { insertInCity1680713149230 } from './migration/1680713149230-insert-in-city';
+import { StateModule } from './state/state.module';
+import { CityModule } from './city/city.module';
+import { AddressModule } from './address/address.module';
 
 @Module({
   imports: [
@@ -19,18 +25,25 @@ import { createTableAddress1680704823670 } from './migration/1680704823670-creat
       password: process.env.DB_PASSWORD,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USERNAME,
-      // synchronize: true,
-      // autoLoadEntities: true,
-      entities: [`${__dirname}/**/*.entity.js`],
+      // entities: [`${__dirname}/**/*.entity{.js,.ts}`],
+      // migrations: [`${__dirname}/migration/{.ts,*.js}`],
+      synchronize: true,
+      autoLoadEntities: true,
       migrations: [
         createTableUser1680700537567,
         createTableState1680704808919,
         createTableCity1680704816860,
         createTableAddress1680704823670,
+        alterTableState1680713117417,
+        insertInState1680713137762,
+        insertInCity1680713149230,
       ],
       migrationsRun: true,
     }),
     UserModule,
+    StateModule,
+    CityModule,
+    AddressModule,
   ],
   controllers: [],
   providers: [],
