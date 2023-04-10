@@ -7,7 +7,7 @@ import {
   Body,
   Get,
 } from '@nestjs/common';
-import { CreateAddressDto } from './dtos/createAddressDto';
+import { CreateAddressDto } from './dtos/createAddress.dto';
 import { AddressService } from './address.service';
 import { AddressEntity } from './entities/address.entity';
 
