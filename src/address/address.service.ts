@@ -26,4 +26,8 @@ export class AddressService {
       userId,
     });
   }
+
+  async findAll(): Promise<AddressEntity[]> {
+    return this.addressRepository.find();
+  }
 }

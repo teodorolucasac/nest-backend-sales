@@ -5,6 +5,7 @@ import {
   ValidationPipe,
   Param,
   Body,
+  Get,
 } from '@nestjs/common';
 import { CreateAddressDto } from './dtos/createAddressDto';
 import { AddressService } from './address.service';
@@ -21,5 +22,10 @@ export class AddressController {
     @Param('userId') userId: number,
   ): Promise<AddressEntity> {
     return this.addressService.createAddress(createAddressDto, userId);
+  }
+
+  @Get()
+  async findAll() {
+    return this.addressService.findAll();
   }
 }
