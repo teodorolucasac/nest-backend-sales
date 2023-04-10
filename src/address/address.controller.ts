@@ -10,13 +10,16 @@ import {
 import { CreateAddressDto } from './dtos/createAddress.dto';
 import { AddressService } from './address.service';
 import { AddressEntity } from './entities/address.entity';
+import { Roles } from 'src/decorators/rolesDecorator';
+import { UserType } from 'src/user/enum/userType.enum';
 
+@Roles(UserType.User)
 @Controller('address')
 export class AddressController {
   constructor(private readonly addressService: AddressService) {}
 
-  @UsePipes(ValidationPipe)
   @Post('/:userId')
+  @UsePipes(ValidationPipe)
   async createAddress(
     @Body() createAddressDto: CreateAddressDto,
     @Param('userId') userId: number,

@@ -14,6 +14,9 @@ import { CityModule } from './city/city.module';
 import { AddressModule } from './address/address.module';
 import { CacheModule } from './cache/cache.module';
 import { AuthModule } from './auth/auth.module';
+import { RolesGuard } from './guards/rolesGuard';
+import { JwtModule } from '@nestjs/jwt';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -48,8 +51,14 @@ import { AuthModule } from './auth/auth.module';
     AddressModule,
     CacheModule,
     AuthModule,
+    JwtModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ],
 })
 export class AppModule {}
