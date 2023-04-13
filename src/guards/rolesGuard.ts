@@ -22,8 +22,6 @@ export class RolesGuard implements CanActivate {
       return true;
     }
 
-    console.log('requiredroless', requiredRoles);
-
     const { authorization } = context.switchToHttp().getRequest().headers;
 
     const loginPayload: LoginPayload | undefined = await this.jwtSerivce

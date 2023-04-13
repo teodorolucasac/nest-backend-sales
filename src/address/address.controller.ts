@@ -3,7 +3,6 @@ import {
   Post,
   UsePipes,
   ValidationPipe,
-  Param,
   Body,
   Get,
 } from '@nestjs/common';
@@ -12,17 +11,18 @@ import { AddressService } from './address.service';
 import { AddressEntity } from './entities/address.entity';
 import { Roles } from 'src/decorators/rolesDecorator';
 import { UserType } from 'src/user/enum/userType.enum';
+import { UserId } from 'src/decorators/userId.decorator';
 
-// @Roles(UserType.User)
+@Roles(UserType.User)
 @Controller('address')
 export class AddressController {
   constructor(private readonly addressService: AddressService) {}
 
-  @Post('/:userId')
+  @Post()
   @UsePipes(ValidationPipe)
   async createAddress(
     @Body() createAddressDto: CreateAddressDto,
-    @Param('userId') userId: number,
+    @UserId() userId: number,
   ): Promise<AddressEntity> {
     return this.addressService.createAddress(createAddressDto, userId);
   }
