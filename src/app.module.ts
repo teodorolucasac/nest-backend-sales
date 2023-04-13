@@ -9,6 +9,7 @@ import { createTableAddress1680704823670 } from './migration/1680704823670-creat
 import { alterTableState1680713117417 } from './migration/1680713117417-alter-table-state';
 import { insertInState1680713137762 } from './migration/1680713137762-insert-in-state';
 import { insertInCity1680713149230 } from './migration/1680713149230-insert-in-city';
+import { alterTableUser1681407918515 } from './migration/1681407918515-alter-table-user';
 import { StateModule } from './state/state.module';
 import { CityModule } from './city/city.module';
 import { AddressModule } from './address/address.module';
@@ -42,6 +43,7 @@ import { APP_GUARD } from '@nestjs/core';
         alterTableState1680713117417,
         insertInState1680713137762,
         insertInCity1680713149230,
+        alterTableUser1681407918515,
       ],
       migrationsRun: true,
     }),
