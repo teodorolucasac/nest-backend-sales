@@ -13,7 +13,7 @@ import { AddressEntity } from './entities/address.entity';
 import { Roles } from 'src/decorators/rolesDecorator';
 import { UserType } from 'src/user/enum/userType.enum';
 
-@Roles(UserType.User)
+// @Roles(UserType.User)
 @Controller('address')
 export class AddressController {
   constructor(private readonly addressService: AddressService) {}

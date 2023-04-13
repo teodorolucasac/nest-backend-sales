@@ -28,15 +28,9 @@ export class RolesGuard implements CanActivate {
 
     const loginPayload: LoginPayload | undefined = await this.jwtSerivce
       .verifyAsync(authorization, {
-        secret: process.env.JWT_SERET,
+        secret: process.env.JWT_SECRET,
       })
       .catch(() => undefined);
-
-    console.log('secret', process.env.JWT_SERET);
-
-    console.log('Authhh', authorization);
-
-    console.log('loginpayloadd', loginPayload);
 
     if (!loginPayload) {
       return false;
